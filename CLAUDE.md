@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-A hands-on, notebook-driven personal learning repo for building AI agents from scratch in Python. The core track starts with raw Python (no frameworks) to build agent primitives, then graduates to smolagents. Appendix notebooks cover Python fundamentals, NumPy, tensors, and other prerequisites separately.
+A hands-on, notebook-driven personal learning repo for building AI agents from scratch in Python. The core track starts with raw Python (no frameworks) to build agent primitives, then graduates to smolagents. Appendix notebooks provide a structured prerequisite path covering Python fundamentals, OOP, and domain-specific topics like NumPy for embeddings.
 
 ## Tech Stack
 
@@ -27,12 +27,17 @@ agents-workshop/
 │   ├── 02_basic_agent_loop.ipynb
 │   └── ...
 │
-├── appendix/              # Optional deep-dive notebooks
-│   ├── python_basics.ipynb
-│   ├── python_intermediate.ipynb
-│   ├── numpy_essentials.ipynb
-│   ├── tensors.ipynb
-│   └── ...
+├── appendix/              # Prerequisite path (3 tiers, 10 notebooks)
+│   ├── 01_python_fundamentals.ipynb
+│   ├── 02_functions_and_scope.ipynb
+│   ├── 03_data_structures.ipynb
+│   ├── 04_strings_and_json.ipynb
+│   ├── 05_error_handling.ipynb
+│   ├── 06_http_and_apis.ipynb
+│   ├── 07_classes_and_oop.ipynb
+│   ├── 08_decorators_and_type_hints.ipynb
+│   ├── 09_file_io_and_text_processing.ipynb
+│   └── 10_numpy_for_embeddings.ipynb
 │
 └── utils/                 # Shared helper code extracted from notebooks
     └── __init__.py
@@ -79,5 +84,5 @@ agents-workshop/
 1. **Raw Python first** — Build the agent loop (prompt → LLM → parse → tool call → loop) manually before introducing any SDK.
 2. **OpenRouter for LLM access** — Free models available, single API key for multiple providers.
 3. **smolagents over heavier frameworks** — Minimal, transparent, close to the metal.
-4. **Agents-first, appendices second** — The core track is agents. Python/NumPy/tensor notebooks are optional reference material.
+4. **Agents-first, appendices second** — The core track is agents. Appendix notebooks are a structured prerequisite path, not the main focus.
 5. **Personal learning repo** — Optimize for understanding, not production polish.

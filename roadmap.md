@@ -59,18 +59,48 @@ Don't boil the ocean. Each notebook tackles one concept, builds one thing, and l
 
 ---
 
-## Appendix Track: Prerequisites & Deep Dives
+## Appendix Track: Prerequisite Path
 
-These are **optional** — use them to fill gaps or as reference. Not required for the core track.
+A structured 10-notebook, 3-tier prerequisite path. Each tier maps to a core phase — complete the tier before starting its corresponding phase. Skip any notebook you're already comfortable with.
 
-| Notebook | Covers | When to Use |
-|----------|--------|------------|
-| `python_basics.ipynb` | Variables, control flow, functions, data structures | If rusty on Python fundamentals |
-| `python_intermediate.ipynb` | Decorators, generators, context managers, type hints | Before Phase 2 (smolagents uses decorators heavily) |
-| `python_advanced.ipynb` | Metaclasses, descriptors, async/await, protocols | When you want to understand SDK internals |
-| `numpy_essentials.ipynb` | Arrays, broadcasting, vectorized operations | Before the RAG notebooks (embeddings are arrays) |
-| `tensors.ipynb` | Tensor basics, PyTorch tensor ops, GPU vs CPU | For understanding model internals later |
-| `http_and_apis.ipynb` | REST, HTTP methods, headers, auth, httpx | If unfamiliar with calling APIs from Python |
+### Tier A — Absolute Foundations (before Core Phase 1)
+
+| # | Notebook | Key Topics |
+|---|----------|-----------|
+| 01 | `python_fundamentals.ipynb` | Variables, types, control flow, imports, Jupyter basics |
+| 02 | `functions_and_scope.ipynb` | def, params, returns, docstrings, functions-as-values, lambdas |
+| 03 | `data_structures.ipynb` | Lists, dicts, nested structures, comprehensions, list-of-dicts pattern |
+| 04 | `strings_and_json.ipynb` | String methods, f-strings, regex basics, json module, JSON schemas |
+| 05 | `error_handling.ipynb` | try/except, common exceptions, retry patterns, basic logging |
+| 06 | `http_and_apis.ipynb` | HTTP fundamentals, httpx, dotenv, API keys, JSON request/response |
+
+### Tier B — Intermediate Python (before Core Phase 2)
+
+| # | Notebook | Key Topics |
+|---|----------|-----------|
+| 07 | `classes_and_oop.ipynb` | class, \_\_init\_\_, self, inheritance, super(), method override |
+| 08 | `decorators_and_type_hints.ipynb` | Type annotations, decorator mechanics, rebuilding a @tool pattern |
+
+### Tier C — Domain-Specific (before Core Phase 3)
+
+| # | Notebook | Key Topics |
+|---|----------|-----------|
+| 09 | `file_io_and_text_processing.ipynb` | open/with, reading files, text chunking, pathlib |
+| 10 | `numpy_for_embeddings.ipynb` | NumPy arrays, dot product, cosine similarity, top-k retrieval |
+
+### Cross-Reference: Appendix → Core
+
+| Appendix Tier | Unlocks Core Phase | Why |
+|---------------|-------------------|-----|
+| **Tier A** (01–06) | **Phase 1** — Foundations | Core 01–05 require HTTP calls, JSON parsing, string manipulation, error handling, and basic Python fluency |
+| **Tier B** (07–08) | **Phase 2** — smolagents | Core 06–08 use the `@tool` decorator, subclass `Tool`, and rely on type hints throughout |
+| **Tier C** (09–10) | **Phase 3** — Memory & Knowledge | Core 09–11 read files, chunk text, compute embeddings, and do vector similarity search |
+
+### What was removed (and why)
+
+- **`python_advanced` (metaclasses, descriptors, protocols)** — no core notebook uses these
+- **`tensors` (PyTorch, GPU vs CPU)** — no core notebook uses tensors
+- **`python_intermediate`** — split into focused notebooks (08 for decorators/type hints, 09 for file I/O/context managers)
 
 ---
 
