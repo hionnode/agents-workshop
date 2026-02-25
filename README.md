@@ -29,7 +29,7 @@ Get a free OpenRouter API key at [openrouter.ai/keys](https://openrouter.ai/keys
 
 ```
 core/          # Main track — numbered notebooks (01-19)
-appendix/      # Optional — Python, NumPy, tensors deep dives
+appendix/      # Prerequisite path — 3 tiers (Foundations, Intermediate, Domain-Specific)
 utils/         # Shared helper code
 ```
 
