@@ -2,7 +2,7 @@
 
 Hands-on Jupyter notebooks for building AI agents from scratch in Python.
 
-No frameworks, no magic. You start with a raw HTTP call to an LLM and build up — step by step — to a full [ReAct agent](https://arxiv.org/abs/2210.03629) with tool use, structured output, and multi-step reasoning. Later phases graduate to [smolagents](https://huggingface.co/docs/smolagents) and tackle memory, planning, and multi-agent systems.
+No frameworks, no magic. You start with a raw HTTP call to an LLM and build up — step by step — to a full [ReAct agent](https://arxiv.org/abs/2210.03629) with tool use, structured output, and multi-step reasoning. Phase 2 graduates to [smolagents](https://huggingface.co/docs/smolagents) (HuggingFace's lightweight agent framework) and goes deep on custom tools, CodeAgent, multi-agent systems, and more. Later phases tackle memory, planning, and advanced multi-agent patterns.
 
 Uses [OpenRouter](https://openrouter.ai/) for LLM access. Free-tier models work for every notebook — no paid API key required.
 
@@ -14,15 +14,20 @@ Uses [OpenRouter](https://openrouter.ai/) for LLM access. Free-tier models work 
 
 ## What you'll build
 
-By the end of the core track's first phase (notebooks 01-05), you'll have built:
+By the end of the core track, you'll have built:
 
 1. **A working LLM integration** — raw API calls, message roles, temperature control, multi-turn conversations
 2. **An agent loop** — the fundamental while-loop where the LLM decides what happens next
 3. **Tool-calling agents** — Python functions the LLM can invoke, with parsing and dispatch
 4. **Structured output extraction** — reliable JSON from LLMs, with validation and retry
 5. **A ReAct agent** — the full Thought / Action / Observation pattern, built from scratch
+6. **smolagents mastery** — custom tools, CodeAgent, multi-agent systems, MCP integration, GradioUI
+7. **Memory & RAG** — conversation memory, retrieval-augmented generation, knowledge tools
+8. **Planning agents** — plan-then-execute, self-reflection, tree-of-thought reasoning
+9. **Multi-agent systems** — collaboration, orchestration, debate patterns
+10. **A research agent** — end-to-end agent combining everything
 
-All in plain Python. No LangChain, no LlamaIndex, no abstractions hiding the mechanics.
+All starting from plain Python. No LangChain, no LlamaIndex, no abstractions hiding the mechanics.
 
 ## Setup
 
@@ -78,7 +83,7 @@ Best for: getting started fast, Chromebook/tablet users, avoiding local Python s
    os.environ["OPENROUTER_API_KEY"] = "sk-or-v1-your-key-here"
    ```
 4. The `utils/` imports won't work out of the box in Colab since it doesn't clone the full repo. For notebooks 02-05, either:
-   - Clone the repo into Colab: `!git clone <repo-url> && %cd agents-workshop` (then everything works normally), or
+   - Clone the repo into Colab (git is pre-installed): `!git clone <repo-url> && %cd agents-workshop` — this is the easiest approach and makes everything work normally, or
    - Copy the `chat()` function from notebook 01 into a cell at the top
 
 > **Colab notes:** The appendix notebooks (01-06) work in Colab with no special setup — they don't make API calls. Appendix 06 (HTTP & APIs) and all core notebooks need the API key setup above.
@@ -104,23 +109,20 @@ Each appendix notebook tells you exactly which core notebooks it unlocks.
 ```
 agents-workshop/
 ├── core/                  # Main agents track (numbered notebooks)
-│   ├── 01_hello_llm.ipynb             # First LLM API call
-│   ├── 02_basic_agent_loop.ipynb      # The agent loop pattern
-│   ├── 03_tool_use_from_scratch.ipynb # Tool calling from scratch
-│   ├── 04_structured_output.ipynb     # JSON output, validation, retry
-│   └── 05_react_agent.ipynb           # Full ReAct agent
+│   ├── 01_hello_llm.ipynb             # Phase 1: First LLM API call
+│   ├── 02_basic_agent_loop.ipynb      # Phase 1: The agent loop pattern
+│   ├── 03_tool_use_from_scratch.ipynb # Phase 1: Tool calling from scratch
+│   ├── 04_structured_output.ipynb     # Phase 1: JSON output, validation, retry
+│   ├── 05_react_agent.ipynb           # Phase 1: Full ReAct agent
+│   └── 06-22 (planned)               # Phases 2-6: smolagents → capstone
 │
 ├── appendix/              # Prerequisite track (10 notebooks, 3 tiers)
-│   ├── 01_python_fundamentals.ipynb
-│   ├── 02_functions_and_scope.ipynb
-│   ├── 03_data_structures.ipynb
-│   ├── 04_strings_and_json.ipynb
-│   ├── 05_error_handling.ipynb
-│   ├── 06_http_and_apis.ipynb
-│   ├── 07_classes_and_oop.ipynb
-│   ├── 08_decorators_and_type_hints.ipynb
-│   ├── 09_file_io_and_text_processing.ipynb
-│   └── 10_numpy_for_embeddings.ipynb
+│   ├── 01-06                          # Tier A: Python foundations
+│   ├── 07-08                          # Tier B: OOP, decorators, type hints
+│   └── 09-10                          # Tier C: File I/O, NumPy
+│
+├── ml-foundations/         # ML prerequisite track (6 notebooks)
+│   └── 01-06                          # Tier D: Calculus → PyTorch → training
 │
 ├── utils/                 # Shared helper code (chat() function, etc.)
 ├── roadmap.md             # Full learning path and future notebook plan
@@ -128,9 +130,30 @@ agents-workshop/
 └── .env.example           # Template for your API key
 ```
 
+## Learning paths
+
+This repo offers multiple tracks. Pick the one(s) that match your goals:
+
+| Track | Directory | Notebooks | What it covers |
+|-------|-----------|-----------|---------------|
+| **Core: Agents** | `core/` | 22 (planned) | The main track — raw Python agents → smolagents → memory → planning → multi-agent → capstone |
+| **Appendix: Python** | `appendix/` | 10 | Prerequisite Python skills — fundamentals, OOP, decorators, file I/O, NumPy |
+| **ML Foundations** | `ml-foundations/` | 6 (planned) | Calculus, linear algebra, probability, PyTorch — prerequisites for [Karpathy's Zero to Hero](https://karpathy.ai/zero-to-hero.html) |
+| **Prompt Engineering** | `prompt-engineering/` | 4 (planned) | System prompts, few-shot/CoT, structured output, prompt testing |
+| **Evaluation** | `eval/` | 4 (planned) | Tracing, test suites, benchmarks, failure mode analysis |
+| **LLM Internals** | `llm-internals/` | 4 (planned) | Tokenization, attention, sampling, model selection |
+| **Safety** | `safety/` | 3 (planned) | Input validation, output filtering, sandboxing |
+| **Production** | `production/` | 4 (planned) | Async, streaming, API serving, monitoring |
+| **Domain Agents** | `domain-agents/` | 4 (planned) | Code agents, research agents, data analysis, document Q&A |
+| **MCP** | `mcp/` | 3 (planned) | MCP fundamentals, building servers, smolagents integration |
+
+See [roadmap.md](roadmap.md) for full details on every track.
+
 ## Core track overview
 
 Each notebook is self-contained — you can run it top to bottom without running previous ones. But they build on each other conceptually, so going in order is recommended.
+
+### Phase 1 — Foundations (Raw Python, No SDK)
 
 | # | Notebook | What you build | Key concepts |
 |---|----------|---------------|--------------|
@@ -140,7 +163,18 @@ Each notebook is self-contained — you can run it top to bottom without running
 | 04 | Structured Output | Reliable JSON extraction from LLMs | JSON prompting, schema validation, retry logic |
 | 05 | ReAct Agent | Full Reason + Act agent | Thought/Action/Observation, scratchpad, few-shot prompting |
 
-> Phases 2-6 (smolagents, memory, planning, multi-agent, capstone) are planned — see [roadmap.md](roadmap.md) for the full curriculum.
+### Phase 2 — smolagents (6 notebooks)
+
+| # | Notebook | What you build | Key concepts |
+|---|----------|---------------|--------------|
+| 06 | Intro to smolagents | Rebuild Phase 1 agents with smolagents | CodeAgent vs ToolCallingAgent, LiteLLMModel, agent traces |
+| 07 | Custom Tools | Tools with `@tool` and `Tool` subclass | Decorator vs subclass, tool descriptions, debugging |
+| 08 | CodeAgent Deep Dive | Agent that writes and executes Python | LocalPythonExecutor, sandboxing, state persistence |
+| 09 | Tool Ecosystem | Hub tools, MCP servers, Gradio Spaces | `load_tool()`, `MCPClient`, `Tool.from_space()`, interop |
+| 10 | Multi-Agent Systems | 3-agent system with manager delegation | Hierarchical orchestration, `managed_agents`, planning |
+| 11 | Agent Configuration | Polished agent with GradioUI | Custom instructions, output validation, sharing, GradioUI |
+
+> Phases 3-6 (memory, planning, advanced multi-agent, capstone) are planned — see [roadmap.md](roadmap.md) for the full curriculum.
 
 ## Appendix track overview
 
@@ -151,12 +185,13 @@ Skip any notebook you're already comfortable with. Each tier unlocks a phase of 
 | **A: Foundations** | 01-06 (Python basics, functions, data structures, strings/JSON, error handling, HTTP) | Core Phase 1 |
 | **B: Intermediate** | 07-08 (classes/OOP, decorators/type hints) | Core Phase 2 |
 | **C: Domain-specific** | 09-10 (file I/O, NumPy for embeddings) | Core Phase 3 |
+| **D: ML Foundations** | ml-foundations/01-06 (calculus, linear algebra, probability, PyTorch, NN building blocks, training) | [Karpathy's Zero to Hero](https://karpathy.ai/zero-to-hero.html) |
 
 ## Notebook conventions
 
 Every notebook follows the same structure:
 
-- **Header** — title, what you'll learn, prerequisites, further reading links
+- **Header** — title, what you'll learn, prerequisites, further reading links (8-12 curated external references per notebook)
 - **Numbered sections** — small runnable cells with markdown explanations between them
 - **Putting It Together** — a capstone exercise combining all concepts from the notebook
 - **Try It Yourself** — 3-4 exercises with scaffold code cells
@@ -174,11 +209,13 @@ All pinned in `requirements.txt`. No heavyweight frameworks.
 
 ## Resources
 
-Curated external resources are linked throughout each notebook. The best starting points:
+Curated external resources are linked throughout each notebook (8-12 per notebook). The best starting points:
 
 - [Lilian Weng — LLM Powered Autonomous Agents](https://lilianweng.github.io/posts/2023-06-23-agent/)
 - [Anthropic — Building Effective Agents](https://docs.anthropic.com/en/docs/build-with-claude/agentic)
 - [ReAct Paper (Yao et al., 2022)](https://arxiv.org/abs/2210.03629)
 - [OpenRouter Docs](https://openrouter.ai/docs/quickstart)
+- [smolagents Documentation](https://huggingface.co/docs/smolagents)
+- [Karpathy — Neural Networks: Zero to Hero](https://karpathy.ai/zero-to-hero.html)
 
 See [roadmap.md](roadmap.md#recommended-external-resources) for the full reading list.
