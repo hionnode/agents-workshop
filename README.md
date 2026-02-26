@@ -41,6 +41,8 @@ See [roadmap.md](roadmap.md) for the full learning path and notebook plan.
 2. Open `core/01_hello_llm.ipynb`
 3. Follow the roadmap from there
 
+**New to Python?** Start with the appendix track instead — `appendix/01_python_fundamentals.ipynb` covers variables, types, and control flow, and the 10 appendix notebooks build up to the prerequisites you'll need for the core agent track.
+
 ## Dependencies
 
 - Python 3.11+
