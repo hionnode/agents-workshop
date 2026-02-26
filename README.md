@@ -26,6 +26,12 @@ All in plain Python. No LangChain, no LlamaIndex, no abstractions hiding the mec
 
 ## Setup
 
+You need two things: the notebooks and an OpenRouter API key. Get a free key at [openrouter.ai/keys](https://openrouter.ai/keys) — the free tier is all you need.
+
+### Option A: Local setup (recommended)
+
+Best for: working offline, full control, using your own editor alongside Jupyter.
+
 ```bash
 # Clone the repo
 git clone <repo-url>
@@ -43,13 +49,39 @@ cp .env.example .env
 # Edit .env and paste your OpenRouter API key
 ```
 
-Get a free API key at [openrouter.ai/keys](https://openrouter.ai/keys). Sign up, create a key, and paste it into `.env`. That's it — the free tier is all you need.
-
 Then start Jupyter:
 
 ```bash
 jupyter notebook
 ```
+
+Open `core/01_hello_llm.ipynb` and you're ready to go.
+
+### Option B: Google Colab (no local install)
+
+Best for: getting started fast, Chromebook/tablet users, avoiding local Python setup.
+
+1. Open any notebook directly in Colab — go to [colab.research.google.com](https://colab.research.google.com), click **File > Open notebook > GitHub**, and paste the repo URL
+2. Install dependencies in the first cell of each notebook:
+   ```python
+   !pip install httpx python-dotenv
+   ```
+3. Set your API key using Colab's Secrets feature (recommended) or inline:
+   ```python
+   # Option 1: Colab Secrets (recommended — click the key icon in the left sidebar)
+   from google.colab import userdata
+   import os
+   os.environ["OPENROUTER_API_KEY"] = userdata.get("OPENROUTER_API_KEY")
+
+   # Option 2: Set directly (less secure — don't share the notebook with your key in it)
+   import os
+   os.environ["OPENROUTER_API_KEY"] = "sk-or-v1-your-key-here"
+   ```
+4. The `utils/` imports won't work out of the box in Colab since it doesn't clone the full repo. For notebooks 02-05, either:
+   - Clone the repo into Colab: `!git clone <repo-url> && %cd agents-workshop` (then everything works normally), or
+   - Copy the `chat()` function from notebook 01 into a cell at the top
+
+> **Colab notes:** The appendix notebooks (01-06) work in Colab with no special setup — they don't make API calls. Appendix 06 (HTTP & APIs) and all core notebooks need the API key setup above.
 
 ## Where to start
 
