@@ -108,7 +108,7 @@ Each appendix notebook tells you exactly which core notebooks it unlocks.
 
 ```
 agents-workshop/
-├── core/                  # Main agents track (numbered notebooks)
+├── core/                  # Main agents track (22 notebooks, Phases 1-6)
 │   ├── 01_hello_llm.ipynb             # Phase 1: First LLM API call
 │   ├── 02_basic_agent_loop.ipynb      # Phase 1: The agent loop pattern
 │   ├── 03_tool_use_from_scratch.ipynb # Phase 1: Tool calling from scratch
@@ -116,13 +116,29 @@ agents-workshop/
 │   ├── 05_react_agent.ipynb           # Phase 1: Full ReAct agent
 │   └── 06-22 (planned)               # Phases 2-6: smolagents → capstone
 │
-├── appendix/              # Prerequisite track (10 notebooks, 3 tiers)
+├── appendix/              # Prerequisite track (14 notebooks, 5 tiers)
 │   ├── 01-06                          # Tier A: Python foundations
 │   ├── 07-08                          # Tier B: OOP, decorators, type hints
-│   └── 09-10                          # Tier C: File I/O, NumPy
+│   ├── 09-10                          # Tier C: File I/O, NumPy
+│   └── 11-14 (planned)               # Tier E: Async, SQL, WebSockets, graphs
 │
-├── ml-foundations/         # ML prerequisite track (6 notebooks)
-│   └── 01-06                          # Tier D: Calculus → PyTorch → training
+├── ml-foundations/         # ML prerequisite track (6 notebooks, Tier D)
+│   └── 01-06                          # Calculus → PyTorch → training
+│
+├── frameworks/            # Agent framework comparison (5 notebooks)
+├── protocols/             # MCP & A2A interoperability (4 notebooks)
+├── browser-agents/        # Computer use & browser automation (4 notebooks)
+├── multimodal/            # Voice & vision agents (4 notebooks)
+├── patterns/              # Agent architecture patterns (6 notebooks)
+├── memory/                # Memory & knowledge infrastructure (5 notebooks)
+├── observability/         # Tracing, cost optimization (4 notebooks)
+├── projects/              # Portfolio projects (6 notebooks)
+├── prompt-engineering/    # Prompt design & testing (4 notebooks)
+├── eval/                  # Evaluation & debugging (7 notebooks)
+├── llm-internals/         # LLM internals for agent builders (4 notebooks)
+├── safety/                # Safety & guardrails (6 notebooks)
+├── production/            # Async & production patterns (8 notebooks)
+├── domain-agents/         # Domain-specific agent patterns (4 notebooks)
 │
 ├── utils/                 # Shared helper code (chat() function, etc.)
 ├── roadmap.md             # Full learning path and future notebook plan
@@ -137,15 +153,22 @@ This repo offers multiple tracks. Pick the one(s) that match your goals:
 | Track | Directory | Notebooks | What it covers |
 |-------|-----------|-----------|---------------|
 | **Core: Agents** | `core/` | 22 (planned) | The main track — raw Python agents → smolagents → memory → planning → multi-agent → capstone |
-| **Appendix: Python** | `appendix/` | 10 | Prerequisite Python skills — fundamentals, OOP, decorators, file I/O, NumPy |
+| **Appendix: Python** | `appendix/` | 14 (10 + 4 planned) | Prerequisite Python skills — fundamentals, OOP, decorators, file I/O, NumPy, async, SQL, WebSockets, graphs |
 | **ML Foundations** | `ml-foundations/` | 6 (planned) | Calculus, linear algebra, probability, PyTorch — prerequisites for [Karpathy's Zero to Hero](https://karpathy.ai/zero-to-hero.html) |
 | **Prompt Engineering** | `prompt-engineering/` | 4 (planned) | System prompts, few-shot/CoT, structured output, prompt testing |
-| **Evaluation** | `eval/` | 4 (planned) | Tracing, test suites, benchmarks, failure mode analysis |
+| **Evaluation** | `eval/` | 7 (planned) | Tracing, test suites, benchmarks, failure modes, LLM-as-judge, regression testing |
 | **LLM Internals** | `llm-internals/` | 4 (planned) | Tokenization, attention, sampling, model selection |
-| **Safety** | `safety/` | 3 (planned) | Input validation, output filtering, sandboxing |
-| **Production** | `production/` | 4 (planned) | Async, streaming, API serving, monitoring |
+| **Safety** | `safety/` | 6 (planned) | Input validation, output filtering, sandboxing, OWASP agentic top 10, auth, governance |
+| **Production** | `production/` | 8 (planned) | Async, streaming, API serving, monitoring, databases, containers, agent-as-a-service, managed platforms |
 | **Domain Agents** | `domain-agents/` | 4 (planned) | Code agents, research agents, data analysis, document Q&A |
-| **MCP** | `mcp/` | 3 (planned) | MCP fundamentals, building servers, smolagents integration |
+| **Frameworks** | `frameworks/` | 5 (planned) | Framework comparison (smolagents, LangGraph, OpenAI Agents SDK, Pydantic AI), choosing a framework |
+| **Protocols** | `protocols/` | 4 (planned) | MCP deep dive, building MCP servers, A2A protocol, MCP + A2A integration |
+| **Browser Agents** | `browser-agents/` | 4 (planned) | Computer Use API, Playwright browser agent, Playwright MCP, web scraping agent |
+| **Multimodal** | `multimodal/` | 4 (planned) | Vision agents, voice pipeline, realtime voice, multimodal tool use |
+| **Architecture Patterns** | `patterns/` | 6 (planned) | State machines, event-driven, human-in-the-loop, agentic RAG, deep research, workflow orchestration |
+| **Memory Infrastructure** | `memory/` | 5 (planned) | Memory architectures, vector databases, knowledge graphs, long-term memory, personalization |
+| **Observability** | `observability/` | 4 (planned) | Langfuse tracing, OpenTelemetry, cost optimization, production dashboards |
+| **Projects** | `projects/` | 6 (planned) | Portfolio projects — knowledge assistant, code review, support bot, data analysis, research team, browser automation |
 
 See [roadmap.md](roadmap.md) for full details on every track.
 
@@ -178,7 +201,7 @@ Each notebook is self-contained — you can run it top to bottom without running
 
 ## Appendix track overview
 
-Skip any notebook you're already comfortable with. Each tier unlocks a phase of the core track.
+Skip any notebook you're already comfortable with. Each tier unlocks a phase of the core track or additional learning paths.
 
 | Tier | Notebooks | Unlocks |
 |------|-----------|---------|
@@ -186,6 +209,7 @@ Skip any notebook you're already comfortable with. Each tier unlocks a phase of 
 | **B: Intermediate** | 07-08 (classes/OOP, decorators/type hints) | Core Phase 2 |
 | **C: Domain-specific** | 09-10 (file I/O, NumPy for embeddings) | Core Phase 3 |
 | **D: ML Foundations** | ml-foundations/01-06 (calculus, linear algebra, probability, PyTorch, NN building blocks, training) | [Karpathy's Zero to Hero](https://karpathy.ai/zero-to-hero.html) |
+| **E: Advanced Foundations** | 11-14 (async/await, databases/SQL, WebSockets/streaming, graph data structures) | Production, multimodal, memory, protocols paths |
 
 ## Notebook conventions
 
